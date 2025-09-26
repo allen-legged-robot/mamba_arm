@@ -1,1 +1,2 @@
 arti_mani/assets/partnet_mobility_dataset.zip filter=lfs diff=lfs merge=lfs -text
+arti_mani/algorithms/data_process/artidata384_seg_DR_randombg/vis_doordrawerfaucet.tar.xz filter=lfs diff=lfs merge=lfs -text
