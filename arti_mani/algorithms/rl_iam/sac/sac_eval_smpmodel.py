@@ -33,7 +33,7 @@ def make_gif(frame_path, result_prefix):
 
 
 if __name__ == "__main__":
-    device = torch.device("cuda:3")
+    device = torch.device("cuda:2")
     # visual_models = ["51200_epo", "102400_epo", "716800_epo", "1024000_epo"]
     eval_steps = np.array([5000000])
     color_maps = [

@@ -39,7 +39,7 @@ def scale_para(para, output_low, output_high):
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = "cuda:3"
+    device = "cuda:2"
     mode = "faucet"  # door, drawer, faucet
     record_id = 3
     save_mode = True

@@ -247,7 +247,7 @@ def main(logger, log_name, logfile_path, device, classes, only_vis):
 
 
 if __name__ == "__main__":
-    device = torch.device("cuda:3")
+    device = torch.device("cuda:2")
     classes_name = ["handle", "door", "cabinet", "switchlink", "fixlink", "other"]
 
     parser = argparse.ArgumentParser(description="test for 90 real images")

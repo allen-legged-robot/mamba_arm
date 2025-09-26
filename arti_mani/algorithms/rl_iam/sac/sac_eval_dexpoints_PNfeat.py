@@ -11,7 +11,7 @@ from stable_baselines3.sac import SAC
 from tqdm import tqdm
 
 if __name__ == "__main__":
-    device = "cuda:3"
+    device = "cuda:2"
     mode = "door"  # "door", "drawer", "faucet", "arti"
     test_num = 50
     save_num = 10

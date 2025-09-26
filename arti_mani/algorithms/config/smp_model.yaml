@@ -11,7 +11,7 @@ loss: "wce"
 data_path: "data_process"
 n_workers: 4
 exp_suffix: "full_splitnet_aug_square_wce_dropout"
-device: "cuda:3"
+device: "cuda:2"
 smp_config:
   mode: "RGBD" # RGBD, RGD, RGB, D
   sample: 4

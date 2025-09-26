@@ -135,7 +135,7 @@ def get_uncertainty(seg_model, rgbd_tensor):
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = "cuda:3"
+    device = "cuda:2"
     mode = "door"  # door, drawer, faucet
     rs_mode = "rgbd"  # "rgbd", "depth", "rgb"
 

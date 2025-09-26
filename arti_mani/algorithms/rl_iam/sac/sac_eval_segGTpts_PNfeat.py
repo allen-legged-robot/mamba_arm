@@ -10,7 +10,7 @@ from arti_mani.utils.wrappers import NormalizeActionWrapper, RenderInfoWrapper
 from stable_baselines3.sac import SAC
 
 if __name__ == "__main__":
-    device = "cuda:3"
+    device = "cuda:2"
     mode = "drawer"  # "door", "drawer", "faucet", "arti"
     test_num = 10
     save_num = 10

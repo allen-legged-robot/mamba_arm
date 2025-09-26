@@ -13,7 +13,7 @@ from arti_mani.utils.wrappers import NormalizeActionWrapper, RenderInfoWrapper
 from stable_baselines3.sac import SAC
 
 if __name__ == "__main__":
-    device = "cuda:3"
+    device = "cuda:2"
     mode = "door"  # "door", "drawer", "faucet"
     test_num = 10
     save_num = 10
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         env_id,
         articulation_ids=arti_ids,
         segmodel_path=None,
-        load_device="cuda:3",
+        load_device="cuda:2",
         sample_mode=sample_mode,
         frame_num=frame_num,
         sample_num=pts_sample_num,

@@ -81,7 +81,7 @@ if __name__ == "__main__":
     eval_seed = np.random.RandomState().randint(2**32)
     rng = setup_seed(eval_seed)
     print("experiment eval random seed: ", eval_seed)
-    device = "cuda:3"
+    device = "cuda:2"
 
     record_id = 5
     mode = "door"  # door, drawer, faucet
