@@ -1,5 +1,7 @@
 name: arm
 channels:
+  - pytorch
+  - nvidia
   - conda-forge
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
@@ -18,8 +20,10 @@ dependencies:
   - certifi=2022.6.15=py38h578d9bd_0
   - click=8.1.2=py38h578d9bd_0
   - cloudpickle=1.6.0=py_0
-  - cudatoolkit=10.1.243=h6bb024c_0
-  - cudnn=7.6.5=cuda10.1_0
+  - pytorch-cuda=12.1
+  - pytorch=2.1.0
+  - torchvision=0.16.0
+  - torchaudio=2.1.0
 #  - cupy=8.3.0=py38hcaf9a05_0
   - dataclasses=0.8=pyhc8e2a94_3
   - fastrlock=0.6=py38h2531618_0
@@ -295,13 +299,7 @@ dependencies:
     - threadpoolctl==2.2.0
     - tomlkit==0.7.2
     - toppra==0.4.2
-    - http://download.pytorch.org/whl/cu113/torch-1.11.0%2Bcu113-cp38-cp38-linux_x86_64.whl
-    - torch-tb-profiler==0.3.1
-#    - torchaudio==0.11.0+cu113
-    - http://download.pytorch.org/whl/cu113/torchaudio-0.11.0%2Bcu113-cp38-cp38-linux_x86_64.whl
-#    - torchsparse==1.4.0.dev0
-#    - torchvision==0.12.0+cu113
-    - http://download.pytorch.org/whl/cu113/torchvision-0.12.0%2Bcu113-cp38-cp38-linux_x86_64.whl
+    - torch-tb-profiler==0.4.1
     - traitlets==5.1.1
     - trimesh==3.9.24
     - typepy==1.3.0
