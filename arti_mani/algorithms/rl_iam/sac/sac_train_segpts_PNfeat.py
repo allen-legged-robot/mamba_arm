@@ -1,6 +1,8 @@
 import os
 import random
 
+import numpy as np
+import torch
 from arti_mani import VISUALMODEL_DIR
 from arti_mani.algorithms.rl_iam.feature_extract import CustomSegPNExtractor
 from arti_mani.algorithms.rl_iam.rl_utils import sb3_make_env_multiarti
