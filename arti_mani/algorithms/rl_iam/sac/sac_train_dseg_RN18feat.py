@@ -65,7 +65,7 @@ if __name__ == "__main__":
         raise NotImplementedError(mode)
     segmodel_path = (
         VISUALMODEL_DIR
-        / "smp_model/20230310_210426_noDR_norandombg_aug_dropout0.2_bs16_focalloss_0.5step40lr0.001_RGBDunet-163264128_mobilenet_v2"
+        / "smp_model/20230228_014637_384_noDR_norandombg_aug_dropout0.2_stereo_bs16_focalloss_0.5step50lr0.001_RGBDunet-163264128_mobilenet_v2"
     )
     obs_mode = "state_egostereo_dseg"
     control_mode = "pd_joint_delta_pos"
