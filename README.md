@@ -33,11 +33,14 @@ Environment: create a conda environment according to `arti_mani/docker/arti_mani
 conda env create -f arti_mani/docker/arti_mani.yaml
 conda activate arm
 pip install -e .
+git lfs pull
 
-cd arti_mani/algorithms/data_process
-tar xzf artidata384_seg_DR_randombg.tar.xz
+cd arti_mani/algorithms/data_process/artidata384_seg_DR_randombg
+tar xvf train.tar.xz && tar xvf val.tar.xz %% tar xvf vis_doordrawerfaucet.tar.xz
+
+cd arti_mani/assets
+unzip -q partnet_mobility_dataset.zip
 ```
-
 
 # Training and Evaluation in Simulation
 
