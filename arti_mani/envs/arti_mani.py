@@ -611,7 +611,7 @@ class ArtiMani(FixedXmate3RobotiqSensorLowResEnv):
 
         model_dir = (
             ASSET_DIR
-            / f"partnet_mobility_dataset/{self._arti_mode}/{self.articulation_id}"
+            / f"partnet_mobility_dataset/{self.articulation_id}"
         )
         urdf_path = model_dir / "mobility_cvx.urdf"
         loader.load_multiple_collisions_from_file = True
@@ -638,7 +638,7 @@ class ArtiMani(FixedXmate3RobotiqSensorLowResEnv):
 
         model_dir = (
             ASSET_DIR
-            / f"partnet_mobility_dataset/{self._arti_mode}/{self.articulation_id}"
+            / f"partnet_mobility_dataset/{self.articulation_id}"
         )
         urdf_path = model_dir / "mobility.urdf"
         loader.load_multiple_collisions_from_file = True
@@ -665,7 +665,7 @@ class ArtiMani(FixedXmate3RobotiqSensorLowResEnv):
 
         model_dir = (
             ASSET_DIR
-            / f"partnet_mobility_dataset/{self._arti_mode}/{self.articulation_id}"
+            / f"partnet_mobility_dataset/{self.articulation_id}"
         )
         urdf_path = model_dir / "mobility.urdf"
         loader.load_multiple_collisions_from_file = True

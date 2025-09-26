@@ -314,4 +314,5 @@ dependencies:
     - websocket-client==1.1.0
     - yapf==0.31.0
     - zipp==3.8.1
+    - path==17.0.0
 # prefix: /home/rvsa/anaconda3/envs/arti-mani
