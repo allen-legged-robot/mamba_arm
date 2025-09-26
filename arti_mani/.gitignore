@@ -211,3 +211,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Synthetic Dataset
+algorithms/data_process/artidata384_seg_DR_randombg
+

@@ -101,6 +101,7 @@ class Config(object):
         self.epochs = cfg.get("epochs", 1000)  # type: int
         self.n_workers = cfg.get("n_workers", 8)  # type: int
         self.batch_size = cfg.get("batch_size", 1)  # type: int
+        self.log_step = cfg.get("log_step", 100)  # type: int
         self.train_ratio = cfg.get("train_ratio", 0.7)  # type: float
         self.val_ratio = cfg.get("val_ratio", 0.1)  # type: float
         self.test_ratio = cfg.get("test_ratio", 0.2)  # type: float

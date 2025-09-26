@@ -181,10 +181,10 @@ class SMPTrainer(object):
             mode=smp_cfg["mode"],
         )
 
-        self.real_data, self.real_img = load_real_data(in_ch=in_ch)
-        self.real_data = self.real_data.to(device=cfg.device, dtype=torch.float32)
+        # self.real_data, self.real_img = load_real_data(in_ch=in_ch)
+        # self.real_data = self.real_data.to(device=cfg.device, dtype=torch.float32)
 
-        print("real data:", self.real_data.shape)
+        # print("real data:", self.real_data.shape)
 
         self.train_loader = DataLoader(
             training_set,
@@ -206,7 +206,7 @@ class SMPTrainer(object):
         )
         # init logging stuff
         self.log_path = Path(cfg.exp_log_path)
-        tb_logdir = self.log_path.abspath()
+        tb_logdir = self.log_path.absolute()
         # print(f'tensorboard --logdir={tb_logdir}\n')
         self.cfg.logger.info(f"tensorboard --logdir={tb_logdir}\n")
         self.sw = SummaryWriter(self.log_path)
@@ -589,7 +589,7 @@ class SMPTrainer(object):
             self.train()
             if e % 1 == 0:
                 self.test()
-                self.test_real()
+                # self.test_real()
             self.epoch += 1
             self.scheduler.step()
             self.save_ck()

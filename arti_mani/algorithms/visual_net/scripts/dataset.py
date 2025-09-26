@@ -181,7 +181,7 @@ class SegDataset(BaseDataset):
         self.rgbd_seg = {"rgb": [], "depth": [], "seg": []}
         for obj_id in sorted(self.ids):
             with np.load(SEGDATA_DIR / data_mode / obj_id) as obj:
-                print(obj_id)
+                # print(obj_id)
                 for key in self.rgbd_seg.keys():
                     self.rgbd_seg[key].append(obj[key])
         for k in self.rgbd_seg:

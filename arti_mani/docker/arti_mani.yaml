@@ -1,4 +1,4 @@
-name: arti-mani
+name: arm
 channels:
   - conda-forge
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
@@ -112,7 +112,7 @@ dependencies:
     - colorlog==6.6.0
     - coverage==6.2
     - crc32c==2.2.post0
-    - cupy-cuda11x
+    - cupy-cuda12x
     - cycler==0.10.0
     - cython==0.29.25
     - dataproperty==0.55.0
