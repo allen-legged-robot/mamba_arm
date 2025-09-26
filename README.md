@@ -30,7 +30,12 @@ This code has been tested on Ubuntu20.04 with Cuda 11.3, Python3.8 and Pytorch 1
 Environment: create a conda environment according to `arti_mani/docker/arti_mani.yaml` file (All requirements are specified in `arti_mani.yaml`).
 
 ```shell
-conda env create -f arti_mani/docker/arti_mani.yaml 
+conda env create -f arti_mani/docker/arti_mani.yaml
+conda activate arm
+pip install -e .
+
+cd arti_mani/algorithms/data_process
+tar xzf artidata384_seg_DR_randombg.tar.xz
 ```
 
 
