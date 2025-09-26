@@ -590,7 +590,7 @@ class ArtiMani(FixedXmate3RobotiqSensorLowResEnv):
 
         articulation_path = (
             ASSET_DIR
-            / f"partnet_mobility_dataset/{self._arti_mode}/{self.articulation_id}"
+            / f"partnet_mobility_dataset/{self.articulation_id}"
         )
         urdf_path = articulation_path / "mobility_cvx.urdf"
         assert (
