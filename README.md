@@ -1,7 +1,7 @@
 <h2 align="center">
   <b>Part-Guided 3D RL for Sim2Real Articulated Object Manipulation</b>
 
-<b><i>RA-L 2023 </i></b>
+`<b><i>`RA-L 2023 `</i></b>`
 
 <div align="center">
     <a href="https://ieeexplore.ieee.org/abstract/document/10242361/" target="_blank">
@@ -30,11 +30,9 @@ This code has been tested on Ubuntu20.04 with Cuda 11.3, Python3.8 and Pytorch 1
 Environment: create a conda environment according to `arti_mani/docker/arti_mani.yaml` file (All requirements are specified in `arti_mani.yaml`).
 
 ```shell
-cd arti_mani/docker
-conda env create -f arti_mani.yaml 
+conda env create -f arti_mani/docker/arti_mani.yaml 
 ```
 
-Partnet Mobility Dataset: downloading from [this link](https://drive.google.com/file/d/1BdTjw70BSFVnWqxkZuQigyDM58TDffkK/view?usp=sharing).
 
 # Training and Evaluation in Simulation
 
@@ -51,17 +49,24 @@ arti_mani/algorithms/visual_net/scripts/
 arti_mani/algorithms/config/smp_model.yaml
 ```
 
+**Dataset**: Partnet Mobility Dataset: downloading from [this link](https://drive.google.com/file/d/1BdTjw70BSFVnWqxkZuQigyDM58TDffkK/view?usp=sharing).
+
 **Date Collection**: To get great evaluation results in simulation, `domain_random` and `random_bg_mode` could be set `False`, but they need to be set `True` if you want to get quite good results on real data.
-**Segmentation Model**: We then built our model `SplitUnet` which is based on [segmentation-models-pytorch](https://github.com/qubvel/segmentation_models.pytorch.git). We decompose `RGB` and `Depth` feature processing in our encoders.
-
-**Training**: We build our `SegDataset` in `arti_mani/algorithms/visual_net/scripts/dataset.py`, in which we added some data augmentation (e.g. Flip, RandomCrop, ColorJitter, GaussianNoise, etc.), which are mostly implemented using [albumentations](https://github.com/albumentations-team/albumentations). After that, we train the model in `arti_mani/algorithms/visual_net/scripts/train_seg.py`. More training details can be referred to `smp_model.yaml` and `train_seg.py`.
-
-**Evaluation**: Performance is tested on validation data using `arti_mani/algorithms/visual_net/scripts/test_sim.py`, and is also tested with new data collected from simulation environment by `arti_mani/algorithms/visual_net/scripts/test_new.py`.
-
-**Synthetic Dataset**:
 You can run `arti_mani/algorithms/data_process/gen_rgbd_data.py` to generate the synthetic dataset, or directly download the dataset from [Synthetic Dataset](https://drive.google.com/drive/folders/1cwuDE-V-XqhWLrn-67ABL5ZbhgWkZPQJ?usp=sharing).
 
-**Checkpoints**
+**Segmentation Model**: We then built our model `SplitUnet` which is based on [segmentation-models-pytorch](https://github.com/qubvel/segmentation_models.pytorch.git). We decompose `RGB` and `Depth` feature processing in our encoders.
+
+We build our `SegDataset` in `arti_mani/algorithms/visual_net/scripts/dataset.py`, in which we added some data augmentation (e.g. Flip, RandomCrop, ColorJitter, GaussianNoise, etc.), which are mostly implemented using [albumentations](https://github.com/albumentations-team/albumentations).
+
+**Training**: After that, we train the model in `arti_mani/algorithms/visual_net/scripts/train_seg.py`. More training details can be referred to `smp_model.yaml` and `train_seg.py`.
+
+```
+python arti_mani/algorithms/visual_net/scripts/train_seg.py
+```
+
+**Evaluation**: Performance is tested on validation data every epoch.
+
+**Pretrained model**
 You can directly use the checkpoints under `arti_mani/algorithms/visual_net/scripts/log/smp_model/20230219_000940_train52-val18_384_noDR_randombg_aug_stereo_bs16_focalloss_0.5step50lr0.001_RGBDunet-163264128_mobilenet_v2`. For further pretrained (maybe better for sim2real), you can download them from [Checkpoints](https://drive.google.com/drive/folders/1u0x83IBVZl-z1Fwlx2Fv1zgaDzl11lhB?usp=sharing).
 
 ## RL Policy Training & Evaluation
@@ -76,8 +81,7 @@ arti_mani/algorithms/rl_iam/sac_eval_segpts_PNfeat.py
 **Training**: After training a good part segmentation model, you can then train the SAC policy:
 
 ```shell
-cd arti_mani/algorithms/rl_iam/
-python sac_train_segpts_PNfeat.py
+python arti_mani/algorithms/rl_iam/sac/sac_train_segpts_PNfeat.py
 ```
 
 You can change the `mode` in the script according your specified task (OpenDoor, OpenDrawer, TurnFaucet, HybridTask). The total 2M steps can be trained for about 7 hours in our `i9-13900K` and `RTX 3090` setting.

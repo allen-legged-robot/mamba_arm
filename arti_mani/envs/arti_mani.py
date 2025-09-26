@@ -221,7 +221,7 @@ class ArtiMani(FixedXmate3RobotiqSensorLowResEnv):
                     in_channels=in_ch,
                     classes=cfg["num_classes"],
                 )
-            self.segmodel.load_state_dict(torch.load(model_path))
+            self.segmodel.load_state_dict(torch.load(model_path, map_location='cpu'))
             self.segmodel.to(torch.device(self.device))
             self.segmodel.eval()
 

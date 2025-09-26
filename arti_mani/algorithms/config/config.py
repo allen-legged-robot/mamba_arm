@@ -129,9 +129,9 @@ class Config(object):
 
         # define and build output path
         if log_name is None:
-            self.exp_log_path = f"log/{exp_name}/{time.strftime('%Y%m%d_%H%M%S', time.localtime())}_{self.exp_suffix}"
+            self.exp_log_path = f"logs/{exp_name}/{time.strftime('%Y%m%d_%H%M%S', time.localtime())}_{self.exp_suffix}"
         else:
-            self.exp_log_path = f"log/{exp_name}/{log_name}"
+            self.exp_log_path = f"logs/{exp_name}/{log_name}"
         if not os.path.exists(self.exp_log_path):
             os.makedirs(self.exp_log_path)
 
