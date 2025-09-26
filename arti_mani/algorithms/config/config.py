@@ -112,9 +112,9 @@ class Config(object):
         self.smp_config = cfg.get("smp_config", {})  # type: dict
 
         if cfg.get("device", None) is not None and cfg["device"] != "cpu":
-            os.environ["CUDA_VISIBLE_DEVICES"] = str(
-                cfg.get("device").split(":")[1]
-            )  # type: str
+            # os.environ["CUDA_VISIBLE_DEVICES"] = str(
+            #     cfg.get("device").split(":")[1]
+            # )  # type: str
             self.device = "cuda:2"
         elif cfg.get("device", None) is not None and cfg["device"] == "cpu":
             self.device = "cpu"
