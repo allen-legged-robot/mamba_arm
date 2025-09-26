@@ -212,5 +212,7 @@ dmypy.json
 cython_debug/
 
 # Synthetic Dataset
-algorithms/data_process/artidata384_seg_DR_randombg
+algorithms/data_process/artidata384_seg_DR_randombg/train/
+algorithms/data_process/artidata384_seg_DR_randombg/val/
+algorithms/data_process/artidata384_seg_DR_randombg/vis_*/
 
