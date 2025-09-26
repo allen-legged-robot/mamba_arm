@@ -110,7 +110,7 @@ class ArtiMani(FixedXmate3RobotiqSensorLowResEnv):
         control_freq=20,
         control_mode=None,
         add_eepadpts=False,
-        device: str = "cuda:0",
+        device: str = "cuda:3",
     ):
         self._arti_info = OrderedDict()
         with open(

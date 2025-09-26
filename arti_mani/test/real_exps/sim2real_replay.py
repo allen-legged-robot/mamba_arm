@@ -101,7 +101,7 @@ if __name__ == "__main__":
     eval_seed = np.random.RandomState().randint(2**32)
     rng = setup_seed(eval_seed)
     print("experiment eval random seed: ", eval_seed)
-    device = "cuda:0"
+    device = "cuda:3"
 
     record_id = 3
     sim2real_step_num = 5

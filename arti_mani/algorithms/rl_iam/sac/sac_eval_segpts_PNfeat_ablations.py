@@ -114,7 +114,7 @@ def vis_sample_pts(
 
 
 if __name__ == "__main__":
-    device = "cuda:0"
+    device = "cuda:3"
     mode = "door"  # "door", "drawer", "faucet", "arti"
     test_trials = 3
     test_num = 50

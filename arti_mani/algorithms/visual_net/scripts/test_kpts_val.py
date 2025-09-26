@@ -154,7 +154,7 @@ def main(sample_num, logger, log_name, device):
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = torch.device("cuda:0")
+    device = torch.device("cuda:3")
     test_num = 80
     parser = argparse.ArgumentParser(description=f"test for {test_num} sim images")
     # log_name = "20230305_173407_D64H40W64_deconv3_kpts3norm01addvis_uvz_lr1e-3"

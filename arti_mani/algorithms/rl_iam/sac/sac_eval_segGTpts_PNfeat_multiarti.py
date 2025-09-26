@@ -43,7 +43,7 @@ def draw_target_pts(env, gripper_pts_world, radius=0.005, color=(0, 0, 1), name=
 
 
 if __name__ == "__main__":
-    device = "cuda:0"
+    device = "cuda:3"
     mode = "arti"  # "door", "drawer", "faucet", "laptop", "kitchen_pot"
     test_num = 50
     save_num = 5

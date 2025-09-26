@@ -91,7 +91,7 @@ def save_subplots(real_results_path, step, subplot_num, rgb, depth, mode=None):
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = "cuda:0"
+    device = "cuda:3"
     mode = "faucet"  # door, drawer, faucet
     rs_mode = "rgbd"  # "rgbd", "depth", "rgb"
 

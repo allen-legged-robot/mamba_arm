@@ -37,7 +37,7 @@ def main():
             "ArtiMani-v0",
             articulation_ids=arti_ids,
             segmodel_path=VISUALMODEL_DIR / f"kpt_model/{log_name}",
-            device="cuda:0",
+            device="cuda:3",
             obs_mode="state_egostereo_keypoints",
             control_mode="pd_joint_delta_pos",
         )

@@ -38,7 +38,7 @@ def load_vismodel(vismodel_path, load_device):
 
 
 if __name__ == "__main__":
-    device = "cuda:0"
+    device = "cuda:3"
     # Ours, Oracle-based RL, Image-based RL, Keypoints-based RL, Dexpoints-based RL
     baseline_mode = "hybrid/Dexpoints-based RL"
     mode = "arti"  # "door", "drawer", "faucet", "arti"

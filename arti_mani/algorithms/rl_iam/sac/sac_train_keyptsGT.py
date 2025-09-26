@@ -24,7 +24,7 @@ def setup_seed(seed=1029):
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = "cuda:0"
+    device = "cuda:3"
     mode = "door"  # "door", "drawer", "faucet"
     train_procs = 4
     eval_procs = 1

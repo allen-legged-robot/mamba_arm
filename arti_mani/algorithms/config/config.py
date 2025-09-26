@@ -115,7 +115,7 @@ class Config(object):
             os.environ["CUDA_VISIBLE_DEVICES"] = str(
                 cfg.get("device").split(":")[1]
             )  # type: str
-            self.device = "cuda:0"
+            self.device = "cuda:3"
         elif cfg.get("device", None) is not None and cfg["device"] == "cpu":
             self.device = "cpu"
         else:

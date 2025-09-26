@@ -59,7 +59,7 @@ class CustomProcessStateExtractor(BaseFeaturesExtractor):
         self.base_cam_intrin = torch.tensor(
             [[45.5882, 0.0, 31.7436], [0.0, 45.547, 17.6573], [0.0, 0.0, 1.0]],
             requires_grad=True,
-            device="cuda:0",
+            device="cuda:3",
         )
         self.base_cam_extrin = torch.tensor(
             [
@@ -69,7 +69,7 @@ class CustomProcessStateExtractor(BaseFeaturesExtractor):
                 [0.0, 0.0, 0.0, 1.0],
             ],
             requires_grad=True,
-            device="cuda:0",
+            device="cuda:3",
         )
 
         # Update the features dim manually
@@ -132,7 +132,7 @@ class CustomDepthSegExtractor(BaseFeaturesExtractor):
                 [0.0, 0.01089966, -0.40202298],
                 [0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         self.ego_cam_extrin = torch.tensor(
             [
@@ -141,7 +141,7 @@ class CustomDepthSegExtractor(BaseFeaturesExtractor):
                 [0.0037, 1.0, -0.0079, 0.0774],
                 [0.0, 0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         # load the Unet model
         self.attn = AttentionDepthUNet(
@@ -153,7 +153,7 @@ class CustomDepthSegExtractor(BaseFeaturesExtractor):
             norm=None,
             activation="lrelu",
             skip_connections=True,
-        ).to(torch.device("cuda:0"))
+        ).to(torch.device("cuda:3"))
         self.attn.train()
 
         # Update the features dim manually
@@ -214,7 +214,7 @@ class CustomRGBDSegExtractor(BaseFeaturesExtractor):
         #     [[91.703, 0., 63.304],
         #      [0., 91.746, 36.884],
         #      [0., 0., 1.]],
-        #     device="cuda:0",
+        #     device="cuda:3",
         # )
         self.ego_cam_intrin_inv = torch.tensor(
             [
@@ -222,7 +222,7 @@ class CustomRGBDSegExtractor(BaseFeaturesExtractor):
                 [0.0, 0.01089966, -0.40202298],
                 [0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         self.ego_cam_extrin = torch.tensor(
             [
@@ -231,14 +231,14 @@ class CustomRGBDSegExtractor(BaseFeaturesExtractor):
                 [0.0037, 1.0, -0.0079, 0.0774],
                 [0.0, 0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         # self.ego_cam_extrin_inv = torch.tensor(
         #     [[-0.01272954, -0.99992464, 0.00369915, 0.02212854],
         #      [-0.00785192, 0.00379982, 0.99992353, -0.07926868],
         #      [-0.99987629, 0.01267029, -0.00794717, -0.22617743],
         #      [0., 0., 0., 1.]],
-        #     device="cuda:0",
+        #     device="cuda:3",
         # )
 
         # load the Attention model
@@ -259,7 +259,7 @@ class CustomRGBDSegExtractor(BaseFeaturesExtractor):
             norm=None,
             activation="lrelu",
             skip_connections=True,
-        ).to(torch.device("cuda:0"))
+        ).to(torch.device("cuda:3"))
         self.attn.train()
 
         # self.weight_gen = WeightGen(
@@ -267,7 +267,7 @@ class CustomRGBDSegExtractor(BaseFeaturesExtractor):
         #     weight_num=5,
         #     norm="layer",
         #     activation="lrelu",
-        # ).to(torch.device("cuda:0"))
+        # ).to(torch.device("cuda:3"))
         # self.weight_gen.train()
         # self.weight = None
 
@@ -276,7 +276,7 @@ class CustomRGBDSegExtractor(BaseFeaturesExtractor):
         #     out_chan=1,
         #     norm=None,
         #     activation="relu",
-        # ).to(torch.device("cuda:0"))
+        # ).to(torch.device("cuda:3"))
         # self.feat_agg.train()
 
         # self.pn = PointNetfeat(in_ch=3, mlp_specs=[64, 128, 1024], xyz_transform=False, feature_transform=False)
@@ -467,7 +467,7 @@ class CustomRGBDPretrainSegExtractor(BaseFeaturesExtractor):
                 [0.0, 0.01089966, -0.40202298],
                 [0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         self.ego_cam_extrin = torch.tensor(
             [
@@ -476,7 +476,7 @@ class CustomRGBDPretrainSegExtractor(BaseFeaturesExtractor):
                 [0.0037, 1.0, -0.0079, 0.0774],
                 [0.0, 0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
 
         # log_name = "pretrain_unet/20221212_152355_cellb005_allcabfaucetfilter_bs512_lr1e-3_bnrelu_2siam4updown163264128"
@@ -499,7 +499,7 @@ class CustomRGBDPretrainSegExtractor(BaseFeaturesExtractor):
             activation=smp_cfg["activation"],
         )
         self.attn.load_state_dict(torch.load(model_path))
-        self.attn.to(torch.device("cuda:0"))
+        self.attn.to(torch.device("cuda:3"))
         # siamese_cfg = cfg["segnet_config"]["siamese_config"]
         # unet_cfg = cfg["segnet_config"]["unet_config"]
         # siamese_net = SiameseNet(
@@ -519,7 +519,7 @@ class CustomRGBDPretrainSegExtractor(BaseFeaturesExtractor):
         #     norm=unet_cfg["norm"],
         #     activation=unet_cfg["activation"],
         #     skip_connections=unet_cfg["skip_connections"]
-        # ).to(torch.device("cuda:0"))
+        # ).to(torch.device("cuda:3"))
         # self.attn.load_w(model_path)
         self.attn.eval()
         # self.attn.requires_grad(False)
@@ -765,7 +765,7 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
                 [0.0, 0.01089966, -0.40202298],
                 [0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         self.ego_cam_extrin = torch.tensor(
             [
@@ -774,7 +774,7 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
                 [0.0037, 1.0, -0.0079, 0.0774],
                 [0.0, 0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
 
         # log_name = "smp_model/20230110_103746_cab39-17_faucet11-3_newaug_bs256_0.5step50lr0.001_RGBDunet3-3264128_mobilenet_v2"
@@ -803,7 +803,7 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
             activation=smp_cfg["activation"],
         )
         self.segmodel.load_state_dict(torch.load(model_path))
-        self.segmodel.to("cuda:0")
+        self.segmodel.to("cuda:3")
         self.segmodel.eval()
         self.num_classes = cfg["num_classes"]
 
@@ -818,7 +818,7 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
         seg_info = torch.zeros(
             self.num_classes * self.sample_num + 40,
             self.num_classes + 1,
-            device=torch.device("cuda:0"),
+            device=torch.device("cuda:3"),
         )
         for nc in range(self.num_classes):
             seg_info[nc * self.sample_num : (nc + 1) * self.sample_num, nc] = 1
@@ -826,13 +826,13 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
 
         # shuffle random 5 points label
         # random_label = torch.eye(
-        #     self.num_classes, device=torch.device("cuda:0")
+        #     self.num_classes, device=torch.device("cuda:3")
         # )[torch.randint(0, self.num_classes, (5 * self.num_classes,))]
         # random_label = torch.zeros(
         #     self.num_classes * 5, self.num_classes + 1,
-        #     device=torch.device("cuda:0")
+        #     device=torch.device("cuda:3")
         # )
-        # indices = torch.randint(0, self.num_classes, (self.num_classes * 5, ), device=torch.device("cuda:0"))
+        # indices = torch.randint(0, self.num_classes, (self.num_classes * 5, ), device=torch.device("cuda:3"))
         # random_label.scatter_(1, indices.unsqueeze(1), 1)
         # seg_info[
         #     np.random.choice(range(self.sample_num*self.num_classes), 5 * self.num_classes), :
@@ -874,7 +874,7 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
                     ones_num = one_indices.shape[0]
                     if ones_num == 0:
                         cur_indices = torch.zeros(
-                            self.sample_num, dtype=torch.int64, device="cuda:0"
+                            self.sample_num, dtype=torch.int64, device="cuda:3"
                         )
                     elif ones_num < self.sample_num:
                         repeat_times = self.sample_num // ones_num
@@ -931,7 +931,7 @@ class CustomRGBDPretrainSegPointNetExtractor(BaseFeaturesExtractor):
         )  # (N, C*sample_num+40, 3+C+1)
         ## concat class & confidence info
         # conf_scores = torch.cat(
-        #     (values.view(N, -1), torch.ones((N, 40), device=torch.device("cuda:0"))), dim=1
+        #     (values.view(N, -1), torch.ones((N, 40), device=torch.device("cuda:3"))), dim=1
         # ).unsqueeze(2)  # (N, C*sample_num+40, 1)
         # eexyzS_sample = torch.cat(
         #     (eewpad_xyz_sample, self.seg_info.repeat(N, 1, 1), conf_scores), dim=2
@@ -978,7 +978,7 @@ class CustomPretrainSegPNExtractor(BaseFeaturesExtractor):
         seg_info = torch.zeros(
             self.num_classes * self.sample_num + 40,
             self.num_classes + 1,
-            device=torch.device("cuda:0"),
+            device=torch.device("cuda:3"),
         )
         for nc in range(self.num_classes):
             seg_info[nc * self.sample_num : (nc + 1) * self.sample_num, nc] = 1
@@ -986,13 +986,13 @@ class CustomPretrainSegPNExtractor(BaseFeaturesExtractor):
 
         # shuffle random 5 points label
         # random_label = torch.eye(
-        #     self.num_classes, device=torch.device("cuda:0")
+        #     self.num_classes, device=torch.device("cuda:3")
         # )[torch.randint(0, self.num_classes, (5 * self.num_classes,))]
         # random_label = torch.zeros(
         #     self.num_classes * 5, self.num_classes + 1,
-        #     device=torch.device("cuda:0")
+        #     device=torch.device("cuda:3")
         # )
-        # indices = torch.randint(0, self.num_classes, (self.num_classes * 5, ), device=torch.device("cuda:0"))
+        # indices = torch.randint(0, self.num_classes, (self.num_classes * 5, ), device=torch.device("cuda:3"))
         # random_label.scatter_(1, indices.unsqueeze(1), 1)
         # seg_info[
         #     np.random.choice(range(self.sample_num*self.num_classes), 5 * self.num_classes), :
@@ -1020,7 +1020,7 @@ class CustomPretrainSegPNExtractor(BaseFeaturesExtractor):
         )  # (N, C*sample_num+40, 3+C+1)
         ## concat class & confidence info
         # conf_scores = torch.cat(
-        #     (values.view(N, -1), torch.ones((N, 40), device=torch.device("cuda:0"))), dim=1
+        #     (values.view(N, -1), torch.ones((N, 40), device=torch.device("cuda:3"))), dim=1
         # ).unsqueeze(2)  # (N, C*sample_num+40, 1)
         # eexyzS_sample = torch.cat(
         #     (eewpad_xyz_sample, self.seg_info.repeat(N, 1, 1), conf_scores), dim=2
@@ -1096,7 +1096,7 @@ class CustomKptExtractor(BaseFeaturesExtractor):
         #         [0.0, 0.01089966, -0.40202298],
         #         [0.0, 0.0, 1.0],
         #     ],
-        #     device="cuda:0",
+        #     device="cuda:3",
         # )
         # self.ego_cam_extrin = torch.tensor(
         #     [
@@ -1105,7 +1105,7 @@ class CustomKptExtractor(BaseFeaturesExtractor):
         #         [0.0037, 1.0, -0.0079, 0.0774],
         #         [0.0, 0.0, 0.0, 1.0],
         #     ],
-        #     device="cuda:0",
+        #     device="cuda:3",
         # )
 
         self.num_kpts = num_kpts
@@ -1153,7 +1153,7 @@ class CustomKptGTExtractor(BaseFeaturesExtractor):
         #         [0.0, 0.01089966, -0.40202298],
         #         [0.0, 0.0, 1.0],
         #     ],
-        #     device="cuda:0",
+        #     device="cuda:3",
         # )
         # self.ego_cam_extrin = torch.tensor(
         #     [
@@ -1162,7 +1162,7 @@ class CustomKptGTExtractor(BaseFeaturesExtractor):
         #         [0.0037, 1.0, -0.0079, 0.0774],
         #         [0.0, 0.0, 0.0, 1.0],
         #     ],
-        #     device="cuda:0",
+        #     device="cuda:3",
         # )
 
         self.num_kpts = num_kpts
@@ -1219,7 +1219,7 @@ class CustomRGBDSegGTPointNetExtractor(BaseFeaturesExtractor):
                 [0.0, 0.01089966, -0.40202298],
                 [0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         self.ego_cam_extrin = torch.tensor(
             [
@@ -1228,7 +1228,7 @@ class CustomRGBDSegGTPointNetExtractor(BaseFeaturesExtractor):
                 [0.0037, 1.0, -0.0079, 0.0774],
                 [0.0, 0.0, 0.0, 1.0],
             ],
-            device="cuda:0",
+            device="cuda:3",
         )
         self.num_classes = 6
 
@@ -1243,7 +1243,7 @@ class CustomRGBDSegGTPointNetExtractor(BaseFeaturesExtractor):
         seg_info = torch.zeros(
             self.num_classes * self.sample_num + 40,
             self.num_classes + 1,
-            device=torch.device("cuda:0"),
+            device=torch.device("cuda:3"),
         )
         for nc in range(self.num_classes):
             seg_info[nc * self.sample_num : (nc + 1) * self.sample_num, nc] = 1
@@ -1361,7 +1361,7 @@ class CustomRGBDEncodExtractor(BaseFeaturesExtractor):
             strides=[2, 2],
             norm=None,
             activation="lrelu",
-        ).to(torch.device("cuda:0"))
+        ).to(torch.device("cuda:3"))
         self.unet_encod.train()
 
         # Update the features dim manually
@@ -1393,7 +1393,7 @@ class CustomPCSegExtractor(BaseFeaturesExtractor):
         self.state_repeat_times = state_repeat_times
 
         self.attn = PointNetDenseCls(in_ch=3, mlp_specs=[64, 128, 512], k=2).to(
-            torch.device("cuda:0")
+            torch.device("cuda:3")
         )
         self.attn.train()
 
@@ -1519,8 +1519,8 @@ class CustomPCSegGTExtractor(BaseFeaturesExtractor):
         eepts = ee_xyz.view(N, 3, -1)
         handel_mask = handle_seg.view(N, -1).bool()
         background_mask = ~handel_mask
-        ee_ptcenter = torch.zeros((N, 3), device="cuda:0")
-        background_ptcenter = torch.zeros((N, 3), device="cuda:0")
+        ee_ptcenter = torch.zeros((N, 3), device="cuda:3")
+        background_ptcenter = torch.zeros((N, 3), device="cuda:3")
         for i in range(N):
             if torch.any(handel_mask[i]):
                 ee_ptcenter[i] = (eepts[i, :, handel_mask[i]]).mean(1)  # (3)

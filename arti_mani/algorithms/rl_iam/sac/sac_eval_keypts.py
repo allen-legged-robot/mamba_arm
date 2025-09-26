@@ -65,7 +65,7 @@ def vis_keypoints(rgb, uvz, uvz_pred, uvz_visable, save_filename):
 
 
 if __name__ == "__main__":
-    device = "cuda:0"
+    device = "cuda:3"
     mode = "door"  # "door", "drawer", "faucet"
     test_num = 10
     save_num = 10

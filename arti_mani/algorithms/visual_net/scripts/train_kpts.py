@@ -30,7 +30,7 @@ class KPTSTrainer(object):
         self.num_keypoints = 3
         self.num_deconv_layers = 3
         self.has_dropout = True
-        self.device = torch.device("cuda:0")
+        self.device = torch.device("cuda:3")
         self.seed = set_seed()
         self.log_each_step = False
         exp_name = "kpt_model"

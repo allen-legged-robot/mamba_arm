@@ -12,7 +12,7 @@ from arti_mani.algorithms.visual_net.Networks.keypoint_detection import (
 from torch.nn import functional as F
 
 
-def load_kptmodel(log_name, device="cuda:0"):
+def load_kptmodel(log_name, device="cuda:3"):
     vis_result_path = (
         VISUALMODEL_DIR / f"kpt_model/{log_name}/visual_results/test_kpts_val/"
     )
@@ -119,7 +119,7 @@ def compute_err(uvz_err, xyz, fx, fy):
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = torch.device("cuda:0")
+    device = torch.device("cuda:3")
     joint_num = 3
     batch_size = 256
     IM_H, IM_W = 144, 256

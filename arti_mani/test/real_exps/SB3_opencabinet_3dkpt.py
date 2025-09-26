@@ -78,7 +78,7 @@ def load_kpt_model(path):
         num_keypoints=3, num_deconv_layers=3, depth_dim=64, has_dropout=False
     )
     kpt_model.load_state_dict(torch.load(model_path))
-    kpt_model.to(torch.device("cuda:0"))
+    kpt_model.to(torch.device("cuda:3"))
     kpt_model.eval()
     return kpt_model
 
@@ -110,7 +110,7 @@ def save_subplots(real_results_path, step, subplot_num, rgb, depth, rgbplot, mod
 
 if __name__ == "__main__":
     np.set_printoptions(suppress=True, precision=4)
-    device = "cuda:0"
+    device = "cuda:3"
     mode = "drawer"  # door, drawer, faucet
     rs_mode = "rgbd"  # "rgbd", "depth", "rgb"
 

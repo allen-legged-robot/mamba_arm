@@ -31,7 +31,7 @@ def make_gif(frame_path, result_prefix):
 
 
 if __name__ == "__main__":
-    device = torch.device("cuda:0")
+    device = torch.device("cuda:3")
     inds = [92]  # list(range(0, 16))
     color_maps = [
         (0, 255, 0),
